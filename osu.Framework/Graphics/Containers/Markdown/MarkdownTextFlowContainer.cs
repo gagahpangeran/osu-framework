@@ -1,8 +1,6 @@
 ﻿// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the MIT Licence.
 // See the LICENCE file in the repository root for full licence text.
 
-#nullable disable
-
 using System;
 using System.Linq;
 using Markdig.Extensions.CustomContainers;
@@ -24,7 +22,7 @@ namespace osu.Framework.Graphics.Containers.Markdown
         public float TotalTextWidth => Padding.TotalHorizontal + Flow.FlowingChildren.Sum(x => x.BoundingBox.Size.X);
 
         [Resolved]
-        private IMarkdownTextComponent parentTextComponent { get; set; }
+        private IMarkdownTextComponent parentTextComponent { get; set; } = null!;
 
         public MarkdownTextFlowContainer()
         {
@@ -35,10 +33,10 @@ namespace osu.Framework.Graphics.Containers.Markdown
         protected void AddDrawable(Drawable drawable)
             => base.AddText("[" + AddPlaceholder(drawable) + "]");
 
-        public void AddText(string text, Action<SpriteText> creationParameters = null)
+        public void AddText(string text, Action<SpriteText>? creationParameters = null)
             => base.AddText(Escape(text), creationParameters);
 
-        public ITextPart AddParagraph(string text, Action<SpriteText> creationParameters = null)
+        public ITextPart AddParagraph(string text, Action<SpriteText>? creationParameters = null)
             => base.AddParagraph(Escape(text), creationParameters);
 
         public void AddInlineText(ContainerInline container)
