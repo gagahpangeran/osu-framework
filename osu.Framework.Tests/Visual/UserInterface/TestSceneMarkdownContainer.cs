@@ -350,6 +350,24 @@ Here's some more text[^test2] with another footnote!
 [^test2]: This is another footnote [with a link](https://google.com/)!");
         }
 
+        [Test]
+        public void TestNestedInline()
+        {
+            AddStep("Markdown nested inline", () =>
+            {
+                markdownContainer.Text = @"**[bold link text](https://osu.ppy.sh)**
+*[italic link text](https://osu.ppy.sh)*
+[**bold link text**](https://osu.ppy.sh)
+[*italic link text*](https://osu.ppy.sh)
+[**bold and _italic_ link text**](https://osu.ppy.sh)
+[`inline code link text`](https://osu.ppy.sh)
+**`bold inline code`**
+*`italic inline code`*
+_**https://osu.ppy.sh**_
+_**<https://osu.ppy.sh>**_";
+            });
+        }
+
         private partial class TestMarkdownContainer : MarkdownContainer
         {
             public new string DocumentUrl
