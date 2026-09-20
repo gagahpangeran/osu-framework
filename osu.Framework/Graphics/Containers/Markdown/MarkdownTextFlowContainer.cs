@@ -177,7 +177,7 @@ namespace osu.Framework.Graphics.Containers.Markdown
         protected virtual void AddNotImplementedInlineText(Inline inline)
             => AddText(inline.GetType() + " not implemented.", t => t.Colour = Color4.Red);
 
-        protected virtual void AddEmphasis(string text, bool hasBold, bool hasItalic)
+        public virtual void AddEmphasis(string text, bool hasBold, bool hasItalic)
             => AddText(text, t => ApplyEmphasisedCreationParameters(t, hasBold, hasItalic));
 
         protected internal override SpriteText CreateSpriteText() => parentTextComponent.CreateSpriteText();
