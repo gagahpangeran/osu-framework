@@ -400,16 +400,16 @@ _**<https://osu.ppy.sh>**_";
 
                 public Action<AutolinkInline> AutoLinkAdded;
 
-                protected override void AddLinkText(string text, LinkInline linkInline)
+                protected override void AddLinkText(LinkInline linkInline)
                 {
-                    base.AddLinkText(text, linkInline);
+                    base.AddLinkText(linkInline);
 
                     UrlAdded?.Invoke(linkInline);
                 }
 
-                protected override void AddAutoLink(AutolinkInline autolinkInline)
+                protected override void AddAutoLink(AutolinkInline autolinkInline, bool bold = false, bool italic = false)
                 {
-                    base.AddAutoLink(autolinkInline);
+                    base.AddAutoLink(autolinkInline, bold, italic);
 
                     AutoLinkAdded?.Invoke(autolinkInline);
                 }
